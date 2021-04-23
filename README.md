@@ -1,4 +1,11 @@
-# cp3402-2021-site-cp3402-2021-team05
+# Townsville Jazz Club Website Development
+> CP3402 2021 Team 05
+
+## Description
+> Coming soon
+
+# Requirements
+> Coming soon
 
 ## Contributers
 
