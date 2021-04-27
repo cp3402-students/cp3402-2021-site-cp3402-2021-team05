@@ -10,3 +10,4 @@
 ## Contributers
 
 * [Jack McGill](https://github.com/JackMcKill)
+* [Levi Smith](https://github.com/levismith123)
