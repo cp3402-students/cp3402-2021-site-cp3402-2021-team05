@@ -16,7 +16,7 @@ These instructions are a summarised version of [this video](https://www.youtube.
 `vagrant plugin install vagrant-hostsupdater`
 
 #### 3. Download the VCCW .zip file
-- [Download Link]()
+- [Download Link](http://vccw.cc)
 
 #### 4. Create local development folder on your local machine
 - Unzip the .zip file where you want to store the local website and then delete the .zip file
