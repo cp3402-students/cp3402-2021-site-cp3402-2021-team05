@@ -26,14 +26,16 @@ These instructions are a summarised version of [this video](https://www.youtube.
 - Copy the `default.yml` file from the `provision` directory and paste it into your new `local` folder.
 - Rename it from `default.yml` to `site.yml`
 - Open `site.yml` 
-- Change `hostname: vccw.test` to `hostname: [yourname]jazzclub.test`. Don't forget to save the file
+- Change `hostname: vccw.test` to `hostname: [yourname]jazzclub.test`.  
+**REMEMBER TO SAVE THE FILE**
 - If you're on a windows machine you will need to access and change your `hosts` file. To do this you will need to:  
   - Run notepad as administrator.
   - File -> Open -> `C:\Windows\System32\drivers\etc\hosts`. Make sure you're searching **all files** and not just text files.
   - Get your IP and hostname from `site.yml` and add to the bottom of the hosts file: 
 
-    `192.168.33.10 [yourname]jazzclub.test jazzclub.test` **REMEMBER TO SAVE THE FILE**  
-    > For some reason it won't work if we all have the same host name. (Wordmove won't push and pull)
+    `192.168.33.10 [yourname]jazzclub.test jazzclub.test`  
+    **REMEMBER TO SAVE THE FILE**  
+    > Having the same hostname as somebody else seems to break wordmove. I think it's because your hostname is your username when you SSH into the staging / production servers, and having the same username with multiple keys appears to cause issues. 
 
 #### 6. Launch Vagrant
 - Open a terminal on the folder you renamed earlier
@@ -50,19 +52,20 @@ When you've finished working on the website, run `vagrant halt` or `vagrant susp
 ## Working with the staging/production environments
 
 ### Pushing and pulling the theme from GitHub
-Once you have setup the local environment, open your `themes` directory in a new terminal window and paste in this command:  
+Once you have setup the local environment, open the `themes` directory in a new terminal window and paste in this command:  
 `git clone https://github.com/cp3402-students/cp3402-2021-site-cp3402-2021-team05 jazzclub`  
 
 ### Pushing and pulling the WP site to staging (wordmove)
-#### Initial setup
+
+#### Initial `wordmove` setup
 - Once you have setup the local environment, delete the `Movefile.yml`. 
 - In your terminal run `vagrant ssh`. This will ssh you into the VM.
-- Once you have ssh'd into the VM run `cd /var/www/html`, this will change your working directory to the WP folder. 
+- Once you have SSH'd into the VM run `cd /var/www/html`, this will change your working directory to the WP folder. 
 - In this directory run `wordmove init`. This will create a new `movefile.yml` file (for some reason I couldn't get wordmove to work with the existing `Movefile.yml` file that came with the VCCW installation, I had to do it this way in order for it to work
 - Run `ls -lah` to double check that `movefile.yml` was created.
-- Open this file in your editor and change it to match the following, remembering to save the file (you should be able to just copy and paste this):   
+- Open this file in your editor and change it to match the following, **remembering to save the file** (you should be able to just copy and paste this except for making the `local vhost` match your hostname):   
 
-```
+```yaml
 global:
   sql_adapter: default
 
@@ -77,16 +80,14 @@ local:
     host: localhost
 
 staging:
-  vhost: http://52.64.5.32
-  wordpress_path: /var/www/wordpress # use an absolute path here
+  vhost: http://13.54.147.239
+  wordpress_path: /var/www/html # use an absolute path here
 
   database:
-    name: jazzclubdatabase
-    user: myuser
-    password: mypassword
+    name: wordpress
+    user: wpadmin
+    password: wpadminpass
     host: localhost
-    # port: 3308 # Use just in case you have exotic server config
-    # mysqldump_options: --max_allowed_packet=1G # Only available if using SSH
 
   exclude:
     - '.git/'
@@ -104,62 +105,49 @@ staging:
     - 'wp-content/*.sql.gz'
     - '*.orig'
 
-  # paths: # you can customize wordpress internal paths
-  #   wp_content: wp-content
-  #   uploads: wp-content/uploads
-  #   plugins: wp-content/plugins
-  #   mu_plugins: wp-content/mu-plugins
-  #   themes: wp-content/themes
-  #   languages: wp-content/languages
-
   ssh:
-    host: 52.64.5.32
+    host: 13.54.147.239
     user: ubuntu
     password: password # password is optional, will use public keys if available.
     port: 22 # Port is optional
     rsync_options: --verbose --itemize-changes# Additional rsync options, optional
-    # gateway: # Gateway is optional
-    #   host: host
-    #   user: user
-    #   password: password # password is optional, will use public keys if available.
 
-  # ftp:
-  #   user: user
-  #   password: password
-  #   host: host
-  #   passive: true
-  #   scheme: ftps # default ftp
+production:
+  vhost: http://3.106.143.211
+  wordpress_path: /var/www/html # use an absolute path here
 
-  # hooks: # Remote hooks won't work with FTP
-  #   push:
-  #     before:
-  #       local:
-  #         - 'echo "Do something locally before push"'
-  #       remote:
-  #         - 'echo "Do something remotely before push"'
-  #     after:
-  #       local:
-  #         - 'echo "Do something locally after push"'
-  #       remote:
-  #         - 'echo "Do something remotely after push"'
-  #   pull:
-  #     before:
-  #       local:
-  #         - 'echo "Do something locally before pull"'
-  #       remote:
-  #         - 'echo "Do something remotely before pull"'
-  #     after:
-  #       local:
-  #         - 'echo "Do something locally after pull"'
-  #       remote:
-  #         - 'echo "Do something remotely after pull"'
+  database:
+    name: wordpress
+    user: wpadmin
+    password: wpadminpass
+    host: localhost
 
-# staging: # multiple environments can be specified
-#   [...]
+  exclude:
+    - '.git/'
+    - '.gitignore'
+    - '.sass-cache/'
+    - 'node_modules/'
+    - 'bin/'
+    - 'tmp/*'
+    - 'Gemfile*'
+    - 'Movefile'
+    - 'movefile'
+    - 'movefile.yml'
+    - 'movefile.yaml'
+    - 'wp-config.php'
+    - 'wp-content/*.sql.gz'
+    - '*.orig'
+
+  ssh:
+    host: 3.106.143.211
+    user: ubuntu
+    password: password # password is optional, will use public keys if available.
+    port: 22 # Port is optional
+    rsync_options: --verbose --itemize-changes# Additional rsync options, optional
 
 ```  
-##### Sharing your public and private key
-- Back in your terminal run `ssh-keygen`, this will generate your public and private keys to be shared with the AWS server to gain access.
+#### Sharing your public key with the staging / production servers
+- Back in your terminal run `ssh-keygen`. This will generate your public and private keys to be shared with the AWS servers to gain access.
 - Press enter at all the prompts untill you see your keys `randomart image`
 - Run `ls -lah ~/.ssh/` to double check the keys were created. The output should look similiar to this:
 
@@ -171,30 +159,38 @@ drwxr-xr-x 11 vagrant vagrant 4.0K Apr 29 10:47 ..
 -rw-r--r--  1 vagrant vagrant  398 Apr 29 10:53 id_rsa.pub
 -rw-r--r--  1 vagrant vagrant  222 Apr 29 10:47 known_hosts
 ```
-- Run `cat ~/.ssh/id_rsa.pub` to view your public key. At this point you can either copy this key into a plaintext file and send it to me (Jack), and I can add it to the staging/production environment's list of authorized keys for you if you don't want mess around inside the staging server, **OR** you can ssh into the staging server yourself. If doing so yourself, you will need to:
+- Run `cat ~/.ssh/id_rsa.pub` to view your public key. At this point you can either copy this key into a plaintext file and send it to me (Jack), and I can add it to the staging & production environment's lists of authorized keys for you, if you don't want mess around inside the staging server, **OR** you can ssh into the staging server yourself. If doing so yourself, make sure you are at least a little bit familiar with using [vim](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/).
 	- Download the `projectkeypair.pem` file to your computer (I will have to send this to you)
-	- In the directory that it has been downloaded to, open a new terminal window/tab (but make sure you keep the exisiting one still open)
-	- Run `chmod 400 projectkeypair.pem`, then run `ssh -i "projectkeypair.pem" ubuntu@ec2-52-64-5-32.ap-southeast-2.compute.amazonaws.com`. This will ssh you into the staging server.
+	- In the directory that it has been downloaded to, open a new terminal window/tab (but make sure you keep the exisiting one still open).
+	- Run `chmod 400 projectkeypair.pem` to change the permissions, then run `ssh ubuntu@13.54.147.239 -i projectkeypair.pem`. This will ssh you into the **staging** server.
 	- Jump back to the vagrant terminal window and copy the output from the `cat` command. Copy everything, including the `ssh-rsa` at the start and the `vagrant@jazzclub` at the end. Now jump back into the ssh terminal.
 	- Once back inside the staging server ssh terminal, run `vim ~/.ssh/authorized_keys` to open the authorized_keys file in vim.
 	- Use `shift` + `E` untill your curser reaches the end of the file.
 	- Press `o` (lowercase letter o) to add a newline and enter `INSERT` mode
 	- Paste your public key here
 	- Once pasted press `ESC` and type `:wq` then hit enter. This saves your public key into the staging servers list of authorised keys.
-	- Now run `exit` to close the ssh connection. You can now close this terminal window
+	- Now run `exit` to close the ssh connection.
+  - You can now repeat the steps for the **production** server, only this time the ssh command is `ssh ubuntu@3.106.143.211 -i projectkeypair.pem` (the staging and production servers use the same key `projectkeypair.pem` for ssh)
 - Now you should be able to run `wordmove` succesfully
 
 #### Running wordmove
-You only need to do all the above steps once, to setup the keys between your computer and the staging server. Once that setup is complete, you should be able to use wordmove with just 1 command. To check it's working properly:  
+You only need to do all the above steps once to setup the keys between your computer and the staging / production server. The wordmove syntax looks like:  
 
-- Open `[yourname]jazzclub.test` and `http://52.64.5.32` side by side in 2 browser windows. 
-- Make a visible change to your local `[yourname]jazzclub.test` like adding your name to the site title. 
-- Save your change, and run `wordmove push --all` from inside your vagrant ssh terminal. If everything works, you should be able to refresh `http://52.64.5.32` and see your change reflected.
-- Now login to the staging wordpress page `http://52.64.5.32/wp-admin/` with `admin` as both username and password.
-- Make a change, save, and then run `wordmove pull --all` back in your vagrant ssh terminal. Your change should now be visible on `[yourname]jazzclub.test`.
+[`wordmove`] + [`push` or `pull`] + [`-d`] + [`-e`] + [`staging` or `production`]  
+The `-d` flag means database, and the `-e` tells wordmove which environment to use. As an example, this is what it would look like if we were to push changes from our local environment to the staging server:  
+
+`wordmove push -d -e staging`
+
+[Wordmove's flag usage is explained in more detail here](https://github.com/welaika/wordmove/wiki/Usage-and-flags-explained).
+
+To check that it's working properly:  
+
+- Open `[yourname]jazzclub.test` and `http://13.54.147.239` side by side in 2 browser windows.  
+- Run `wordmove pull -d -e staging` from inside your vagrant ssh terminal, making sure you're in the wordpress directory. If everything works, you should be able to refresh your `[yourname]jazzclub.test` browser page and see that your local copy of the site matches that of the staging environment.
+
 
 ## Example workflow
-My understanding of how we will work collaboratively on the WP theme
+An example of how we will work collaboratively on the WP theme
 
 1. Boot up the local environment  
 	- Open up a terminal on your local development folder
@@ -205,7 +201,7 @@ My understanding of how we will work collaboratively on the WP theme
 
 4. Push your changes
 	- If you only made changes to the theme, then you only need to push to github, either with `git push` in the terminal or from inside your editor
-	- If you made changes to the content of the page as well, such adding posts and pages, then you also need to push the changes to the staging site. If this is the case, inside the terminal run `vagrant ssh` to ssh into the VM
-	- Navigate to the WP folder with `cd /var/www/html` and then run `wordmove push --all` to push to staging.
+	- If you made changes to the content of the page as well, such as adding posts and pages, then you also need to push the changes to the staging site. If this is the case, inside the terminal run `vagrant ssh` to ssh into the VM
+	- Navigate to the WP folder with `cd /var/www/html` and then run `wordmove push -d -e staging` to push to staging.
 	- After the push has finished, check it worked on the staging website, and then run `exit` to close the ssh connection.
 5. When you're done for the day save all your changes, push your changes to GitHub and run `vagrant halt` to turn off the VM

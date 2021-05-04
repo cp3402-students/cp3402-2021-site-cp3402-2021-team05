@@ -2,7 +2,11 @@
 > CP3402 2021 Team 05
 
 ## Description
-> Coming soon
+> Coming soon  
+
+[Deployment](/deployment.md)  
+[Theme](/theme.md)  
+[site](/site.md)
 
 ## Requirements
 > Coming soon
