@@ -14,7 +14,7 @@ A starter theme called jazzclub.
 
 == Description ==
 
-Description
+A WordPress theme built for the Townsville Jazz Club
 
 == Installation ==
 
