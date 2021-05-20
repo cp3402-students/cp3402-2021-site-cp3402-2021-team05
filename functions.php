@@ -1,180 +1,66 @@
 <?php
 /**
- * jazzclub functions and definitions
+ * WP Rig functions and definitions
+ *
+ * This file must be parseable by PHP 5.2.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package jazzclub
+ * @package wp_rig
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+define( 'WP_RIG_MINIMUM_WP_VERSION', '4.5' );
+define( 'WP_RIG_MINIMUM_PHP_VERSION', '7.0' );
+
+// Bail if requirements are not met.
+if ( version_compare( $GLOBALS['wp_version'], WP_RIG_MINIMUM_WP_VERSION, '<' ) || version_compare( phpversion(), WP_RIG_MINIMUM_PHP_VERSION, '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+	return;
 }
 
-if ( ! function_exists( 'jazzclub_setup' ) ) :
+// Include WordPress shims.
+require get_template_directory() . '/inc/wordpress-shims.php';
+
+// Setup autoloader (via Composer or custom).
+if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
+	require get_template_directory() . '/vendor/autoload.php';
+} else {
 	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
+	 * Custom autoloader function for theme classes.
 	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
+	 * @access private
+	 *
+	 * @param string $class_name Class name to load.
+	 * @return bool True if the class was loaded, false otherwise.
 	 */
-	function jazzclub_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on jazzclub, use a find and replace
-		 * to change 'jazzclub' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'jazzclub', get_template_directory() . '/languages' );
+	function _wp_rig_autoload( $class_name ) {
+		$namespace = 'WP_Rig\WP_Rig';
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		if ( strpos( $class_name, $namespace . '\\' ) !== 0 ) {
+			return false;
+		}
 
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+		$parts = explode( '\\', substr( $class_name, strlen( $namespace . '\\' ) ) );
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
+		$path = get_template_directory() . '/inc';
+		foreach ( $parts as $part ) {
+			$path .= '/' . $part;
+		}
+		$path .= '.php';
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'jazzclub' ),
-			)
-		);
+		if ( ! file_exists( $path ) ) {
+			return false;
+		}
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-				'style',
-				'script',
-			)
-		);
+		require_once $path;
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'jazzclub_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
-
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
+		return true;
 	}
-endif;
-add_action( 'after_setup_theme', 'jazzclub_setup' );
-
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function jazzclub_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'jazzclub_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'jazzclub_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function jazzclub_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'jazzclub' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'jazzclub' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'jazzclub_widgets_init' );
-
-/**
- * Enqueue scripts and styles.
- */
-function jazzclub_scripts() {
-	wp_enqueue_style( 'jazzclub-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'jazzclub-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'jazzclub-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'jazzclub_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+	spl_autoload_register( '_wp_rig_autoload' );
 }
 
+// Load the `wp_rig()` entry point function.
+require get_template_directory() . '/inc/functions.php';
+
+// Initialize the theme.
+call_user_func( 'WP_Rig\WP_Rig\wp_rig' );

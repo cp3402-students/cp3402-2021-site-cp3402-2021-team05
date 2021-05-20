@@ -4,14 +4,18 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package jazzclub
+ * @package wp_rig
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+namespace WP_Rig\WP_Rig;
+
+if ( ! wp_rig()->is_primary_sidebar_active() ) {
 	return;
 }
-?>
 
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+wp_rig()->print_styles( 'wp-rig-sidebar', 'wp-rig-widgets' );
+
+?>
+<aside id="secondary" class="primary-sidebar widget-area">
+	<?php wp_rig()->display_primary_sidebar(); ?>
 </aside><!-- #secondary -->

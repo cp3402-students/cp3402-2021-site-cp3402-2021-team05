@@ -6,25 +6,15 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package jazzclub
+ * @package wp_rig
  */
+
+namespace WP_Rig\WP_Rig;
 
 ?>
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'jazzclub' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'jazzclub' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'jazzclub' ), 'jazzclub', '<a href="https://github.com/cp3402-students/cp3402-2021-site-cp3402-2021-team05">CP3402 Team 05</a>' );
-				?>
-		</div><!-- .site-info -->
+		<?php get_template_part( 'template-parts/footer/info' ); ?>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
