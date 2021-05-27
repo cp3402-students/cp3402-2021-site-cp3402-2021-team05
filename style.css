@@ -664,7 +664,7 @@ textarea {
 }
 .main-navigation a {
   display: block;
-  text-decoration: none;
+  text-decoration: underline;
 }
 /* Small menu. */
 .menu-toggle,
