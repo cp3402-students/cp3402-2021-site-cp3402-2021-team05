@@ -56,6 +56,7 @@
     font-family: "Courier 10 Pitch", courier, monospace;
     font-size: 36px;
 
+
 		&:hover > a,
 		&.focus > a {
 		}
@@ -63,7 +64,7 @@
 
 	a {
 		display: block;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	.current_page_item > a,
