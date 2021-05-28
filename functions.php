@@ -140,6 +140,9 @@ add_action( 'widgets_init', 'jazzclub_widgets_init' );
  * Enqueue scripts and styles.
  */
 function jazzclub_scripts() {
+    // Enqueue Google Fonts
+    wp_enqueue_style( 'jazzclub-fonts',  'https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap' );
+
 	wp_enqueue_style( 'jazzclub-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'jazzclub-style', 'rtl', 'replace' );
 
