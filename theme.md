@@ -4,8 +4,9 @@ Details about theme coming soon
 
 #### As we add features, list them here, then at the end can re-write this document
 * Fonts:
-    * Headings: Source Sans Pro
-    * Body: PT Serif
-    * Custom headings sizes
+  * Headings: Source Sans Pro
+  * Body: PT Serif
+  * Custom headings sizes
 * Responsive layouts
-
+* Custom header-image functionality to front page
+  * Site admin can add an optional custom image to their header if they want. The image dimensions have been set to 2000px x 850px
