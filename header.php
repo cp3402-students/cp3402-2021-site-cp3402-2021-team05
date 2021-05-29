@@ -64,7 +64,7 @@
 
         <nav id="site-navigation" class="main-navigation">
             <button class="menu-toggle" aria-controls="primary-menu"
-                    aria-expanded="false"><?php esc_html_e('Primary Menu', 'jazzclub'); ?></button>
+                    aria-expanded="false"><?php esc_html_e('Menu', 'jazzclub'); ?></button>
             <?php
             wp_nav_menu(
                 array(
