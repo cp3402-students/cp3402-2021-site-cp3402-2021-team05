@@ -913,6 +913,22 @@ button.dropdown-toggle {
   display: block;
 }
 
+/* Footer
+--------------------------------------------- */
+.site-footer {
+  position: relative;
+  padding: 1em;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  background-color: goldenrod;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .site-footer {
+    padding: 1em 2em;
+  }
+}
+
 /* Widgets
 --------------------------------------------- */
 .widget {
