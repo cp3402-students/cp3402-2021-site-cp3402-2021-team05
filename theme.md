@@ -6,3 +6,4 @@ Details about theme coming soon
 * Fonts:
     * Headings: Source Sans Pro
     * Body: PT Serif
+* Custom headings sizes
