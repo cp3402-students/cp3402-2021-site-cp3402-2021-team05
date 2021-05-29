@@ -1,15 +1,19 @@
-body {
-  padding: 40px;
-}
+
 button,
 input,
 select,
 optgroup,
 textarea {
-	color: $color__text-main;
-	font-family: $font__main;
-	font-size: 1rem;
-	line-height: $font__line-height-body;
+  color: $color__text-main;
+  font-family: $font__serif;
+  @include font-size(.9);
+  //font-size: 1rem;
+  line-height: $font__line-height-body;
+
+  @media screen and (min-width: 700px) {
+		@include font-size(1);
+  }
+
 }
 
 @import "headings";

@@ -381,19 +381,24 @@ html {
 --------------------------------------------------------------*/
 /* Typography
 --------------------------------------------- */
-body {
-  padding: 40px;
-}
-
 button,
 input,
 select,
 optgroup,
 textarea {
   color: #404040;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 1rem;
+  font-family: "PT Serif", serif;
+  font-size: 18px;
   line-height: 1.5;
+}
+@media screen and (min-width: 700px) {
+  button,
+input,
+select,
+optgroup,
+textarea {
+    font-size: 20px;
+  }
 }
 
 h1,
@@ -403,6 +408,31 @@ h4,
 h5,
 h6 {
   clear: both;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.8em;
+}
+
+h3 {
+  font-size: 2.2em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h5 {
+  font-size: 1.8em;
+}
+
+h6 {
+  font-size: 1.6em;
 }
 
 p {
@@ -617,6 +647,15 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.site-main {
+  padding: 1em;
+}
+@media screen and (min-width: 600px) {
+  .site-main {
+    padding: 2em;
+  }
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
