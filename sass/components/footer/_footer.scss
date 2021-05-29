@@ -1,0 +1,35 @@
+.site-footer {
+  position: relative;
+  padding: 1em;
+  font-family: $font__sans;
+  color: #fff;
+  background-color: $color__site-main; // change this once we have finalised the site colours we want
+  text-align: center;
+
+  // Responsive padding for different display sizes
+  @media screen and (min-width: $query__small) {
+    padding: 1em 2em;
+  }
+}
+
+.footer-menu {
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    a {
+      display: block;
+      padding: .5em 1em;
+      color: white;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}

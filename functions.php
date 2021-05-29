@@ -52,6 +52,7 @@ if (!function_exists('jazzclub_setup')) :
         register_nav_menus(
             array(
                 'menu-1' => esc_html__('Primary', 'jazzclub'),
+                'footer' => esc_html__('Footer Menu', 'jazzclub'),
             )
         );
 
@@ -154,9 +155,9 @@ function jazzclub_scripts()
 
     wp_enqueue_script('jazzclub-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), _S_VERSION, true);
 
-    wp_localize_script( 'jazzclub-navigation', 'jazzclubScreenReaderText', array(
-        'expand' => __( 'Expand child menu', 'jazzclub'),
-        'collapse' => __( 'Collapse child menu', 'jazzclub'),
+    wp_localize_script('jazzclub-navigation', 'jazzclubScreenReaderText', array(
+        'expand' => __('Expand child menu', 'jazzclub'),
+        'collapse' => __('Collapse child menu', 'jazzclub'),
     ));
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {

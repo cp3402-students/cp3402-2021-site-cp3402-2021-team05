@@ -913,6 +913,39 @@ button.dropdown-toggle {
   display: block;
 }
 
+/* Footer
+--------------------------------------------- */
+.site-footer {
+  position: relative;
+  padding: 1em;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  background-color: goldenrod;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .site-footer {
+    padding: 1em 2em;
+  }
+}
+
+.footer-menu ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.footer-menu ul a {
+  display: block;
+  padding: 0.5em 1em;
+  color: white;
+  text-decoration: none;
+}
+.footer-menu ul a:hover, .footer-menu ul a:focus {
+  text-decoration: underline;
+}
+
 /* Widgets
 --------------------------------------------- */
 .widget {

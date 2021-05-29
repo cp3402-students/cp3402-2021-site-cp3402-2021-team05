@@ -13,7 +13,7 @@
   padding: 1em;
   font-family: $font__sans;
   color: #fff;
-  background-color: $color__main-header; // change this once we have finalised the site colours we want
+  background-color: $color__site-main; // change this once we have finalised the site colours we want
 
   // Responsive padding for different display sizes
   @media screen and (min-width: $query__small) {
