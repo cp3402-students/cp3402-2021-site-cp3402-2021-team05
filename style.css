@@ -381,10 +381,6 @@ html {
 --------------------------------------------------------------*/
 /* Typography
 --------------------------------------------- */
-body {
-  padding: 40px;
-}
-
 button,
 input,
 select,
@@ -651,6 +647,15 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.site-main {
+  padding: 1em;
+}
+@media screen and (min-width: 600px) {
+  .site-main {
+    padding: 2em;
+  }
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -692,7 +697,7 @@ textarea {
 .main-navigation li {
   position: relative;
   padding: 10px;
-  background-color: lightblue;
+  background-color: lightgray;
   font-family: "Courier 10 Pitch", courier, monospace;
   font-size: 36px;
 }
