@@ -12,3 +12,4 @@ Details about theme coming soon
   * Site admin can add an optional custom image to their header if they want. The image dimensions have been set to 2000px x 850px
 * Custom logo functionality
   * Site title and description automatically adjust to accomodate
+* Added dropdowns to the menu
