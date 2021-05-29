@@ -21,6 +21,28 @@
   }
 }
 
+.site-branding {
+  min-height: 65px;
+  display: flex;
+}
+
+.custom-logo-link {
+  margin-right: 1em;
+
+  img {
+    display: block;
+    height: 65px;
+    width: auto;
+  }
+}
+
+.site-branding-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65px;
+}
+
 .site-title {
   margin: 0;
   padding: 0;
@@ -45,6 +67,7 @@
   font-style: italic;
   font-weight: 100;
 }
+
 
 @media screen and (min-width: $query__medium) {
   .site-header {

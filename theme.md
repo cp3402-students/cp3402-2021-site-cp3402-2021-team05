@@ -10,3 +10,5 @@ Details about theme coming soon
 * Responsive layouts
 * Custom header-image functionality to front page
   * Site admin can add an optional custom image to their header if they want. The image dimensions have been set to 2000px x 850px
+* Custom logo functionality
+  * Site title and description automatically adjust to accomodate
