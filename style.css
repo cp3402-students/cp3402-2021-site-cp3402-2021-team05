@@ -929,6 +929,23 @@ button.dropdown-toggle {
   }
 }
 
+.footer-menu ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.footer-menu ul a {
+  display: block;
+  padding: 0.5em 1em;
+  color: white;
+  text-decoration: none;
+}
+.footer-menu ul a:hover, .footer-menu ul a:focus {
+  text-decoration: underline;
+}
+
 /* Widgets
 --------------------------------------------- */
 .widget {

@@ -11,3 +11,25 @@
     padding: 1em 2em;
   }
 }
+
+.footer-menu {
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    a {
+      display: block;
+      padding: .5em 1em;
+      color: white;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}
