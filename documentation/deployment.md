@@ -1,8 +1,10 @@
-# Local and Staging/Production development environments
+# Deployment
+
+The aim of this document is to briefly describe the deployment and development workflow we utilised when creating this WordPress theme.  
 
 ## Working in the local environment
-We will be using [VCCW](http://vccw.cc) as our local development environment.  
-These instructions are a summarised version of [this video](https://www.youtube.com/watch?v=W6Yp9PO7mr0&list=LL&index=3).
+Our team used chose to use [VCCW](http://vccw.cc) as our local development environment.  
+The following instructions are a summarised version of [this video](https://www.youtube.com/watch?v=W6Yp9PO7mr0&list=LL&index=3).
 
 ### Setting up the environment
 
@@ -27,15 +29,13 @@ These instructions are a summarised version of [this video](https://www.youtube.
 - Rename it from `default.yml` to `site.yml`
 - Open `site.yml` 
 - Change `hostname: vccw.test` to `hostname: [yourname]jazzclub.test`.  
-**REMEMBER TO SAVE THE FILE**
-- If you're on a windows machine you will need to access and change your `hosts` file. To do this you will need to:  
-  - Run notepad as administrator.
+- If you're on a Windows machine you will need to access and change your `hosts` file. To do this you will need to:  
+  - Run Notepad as Administrator.
   - File -> Open -> `C:\Windows\System32\drivers\etc\hosts`. Make sure you're searching **all files** and not just text files.
   - Get your IP and hostname from `site.yml` and add to the bottom of the hosts file: 
 
     `192.168.33.10 [yourname]jazzclub.test jazzclub.test`  
-    **REMEMBER TO SAVE THE FILE**  
-    > Having the same hostname as somebody else seems to break wordmove. I think it's because your hostname is your username when you SSH into the staging / production servers, and having the same username with multiple keys appears to cause issues. 
+    > Having the same hostname as somebody else seems to break `wordmove`. We believe it's because your hostname is your username when you SSH into the staging / production servers, and having the same username with multiple keys appears to cause issues. 
 
 #### 6. Launch Vagrant
 - Open a terminal on the folder you renamed earlier
@@ -159,7 +159,7 @@ drwxr-xr-x 11 vagrant vagrant 4.0K Apr 29 10:47 ..
 -rw-r--r--  1 vagrant vagrant  398 Apr 29 10:53 id_rsa.pub
 -rw-r--r--  1 vagrant vagrant  222 Apr 29 10:47 known_hosts
 ```
-- Run `cat ~/.ssh/id_rsa.pub` to view your public key. At this point you can either copy this key into a plaintext file and send it to me (Jack), and I can add it to the staging & production environment's lists of authorized keys for you, if you don't want mess around inside the staging server, **OR** you can ssh into the staging server yourself. If doing so yourself, make sure you are at least a little bit familiar with using [vim](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/).
+- Run `cat ~/.ssh/id_rsa.pub` to view your public key. At this point you can either copy this key into a plaintext file and send it to me ([Jack](https://github.com/JackMcKill)), and I can add it to the staging & production environment's lists of authorized keys for you, if you don't want mess around inside the staging server, **OR** you can ssh into the staging server yourself. If doing so yourself, make sure you are at least a little bit familiar with using [vim](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/).
 	- Download the `projectkeypair.pem` file to your computer (I will have to send this to you)
 	- In the directory that it has been downloaded to, open a new terminal window/tab (but make sure you keep the exisiting one still open).
 	- Run `chmod 400 projectkeypair.pem` to change the permissions, then run `ssh ubuntu@13.54.147.239 -i projectkeypair.pem`. This will ssh you into the **staging** server.

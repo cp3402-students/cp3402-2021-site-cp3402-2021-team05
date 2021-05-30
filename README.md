@@ -1,22 +1,14 @@
 # Townsville Jazz Club Website Development
-> CP3402 2021 Team 05
 
 ## Description
-This repository is for the custom WordPress theme made by Group 5. The theme is built off of the Underscores starter theme and is made for the Townsville Jazz Club.
+This is a custom WordPress theme, built off of the [_s Underscores](https://underscores.me) theme.
+Developed by the CP3402 Team 05 for the [Townsville Jazz Club](http://jazztownsville.com).
 
 ## Documentation
-[Deployment](/deployment.md)  
-[Theme](/theme.md)  
-[Site](/site.md)
-
-## Site Requirements
-- Oracle VM Virtual Box
-- VCCW
-- WordMove
-- Visual Studio Code/PhpStorm
-- Github
-- Git Bash (Or any other terminal)
-- Node.js
+Please visit the following documentation for further details.  
+[Deployment](/documentation/deployment.md)  
+[Theme](/documentation/theme.md)  
+[Site](/documentation/site.md)
 
 ## Contributers
 * [Jack McGill](https://github.com/JackMcKill)
