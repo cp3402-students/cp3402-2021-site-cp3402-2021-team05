@@ -6,16 +6,16 @@ The fonts used in the theme can be found in the functions.php file. The body use
 - To change the fonts of the theme, go to the functions.php file and find the `wp_enqueue_style(jazzclub-fonts)`, change the link there with another google fonts link to the new desired fonts. 
 
 ## Header
-- TODO
+- 
 
 ## Footer
-- TODO
+- 
 
 ## Responsive layouts
-- TODO
+- 
 
 ## Custom logo functionality
-- TODO
+- 
 
 #### As we add features, list them here, then at the end can re-write this document
 * Fonts:

@@ -11,6 +11,12 @@ This repository is for the custom WordPress theme made by Group 5. The theme is 
 
 ## Site Requirements
 > Coming soon
+- Oracle VM Virtual Box
+- VCCW
+- WordMove
+- Visual Studio Code/PhpStorm
+- Github
+- 
 
 ## Contributers
 * [Jack McGill](https://github.com/JackMcKill)
