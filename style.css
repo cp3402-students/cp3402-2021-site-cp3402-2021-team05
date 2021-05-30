@@ -694,7 +694,7 @@ textarea {
 .post-navigation a:focus,
 .paging-navigation a:hover,
 .paging-navigation a:focus {
-  color: black;
+  color: white;
   border-color: darkgoldenrod;
   background: darkgoldenrod;
 }
