@@ -661,26 +661,78 @@ textarea {
 --------------------------------------------------------------*/
 /* Navigation
 --------------------------------------------- */
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-  margin: 0 0 1.5em;
+.comment-navigation,
+.posts-navigation,
+.post-navigation,
+.paging-navigation {
+  padding: 2em 0;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: left;
+  overflow: hidden;
 }
-.comment-navigation .nav-links,
-.posts-navigation .nav-links,
-.post-navigation .nav-links {
+.comment-navigation .meta-nav,
+.posts-navigation .meta-nav,
+.post-navigation .meta-nav,
+.paging-navigation .meta-nav {
+  display: block;
+}
+.comment-navigation a,
+.posts-navigation a,
+.post-navigation a,
+.paging-navigation a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  padding: 1em;
+  border: 1px solid #cccccc;
+  color: black;
+}
+.comment-navigation a:hover, .comment-navigation a:focus,
+.posts-navigation a:hover,
+.posts-navigation a:focus,
+.post-navigation a:hover,
+.post-navigation a:focus,
+.paging-navigation a:hover,
+.paging-navigation a:focus {
+  color: white;
+  border-color: darkgoldenrod;
+  background: darkgoldenrod;
+}
+
+.nav-links {
   display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0;
+}
+
+.comment-navigation .nav-title,
+.posts-navigation .nav-title,
+.post-navigation .nav-title {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.comment-navigation .nav-subtitle,
+.posts-navigation .nav-subtitle,
+.post-navigation .nav-subtitle {
+  display: block;
 }
 .comment-navigation .nav-previous,
+.comment-navigation .nav-next,
 .posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  flex: 1 0 50%;
+.posts-navigation .nav-next,
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+  float: left;
+  display: flex;
+  align-items: stretch;
+  width: 45%;
 }
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-  text-align: end;
-  flex: 1 0 50%;
+  float: right;
+  text-align: right;
 }
 
 /* Header
@@ -849,7 +901,7 @@ button.dropdown-toggle {
   .main-navigation .menu-item-has-children > a,
 .main-navigation .page_item_has_children > a {
     padding-right: 2em;
-    background: orange;
+    background: darkgoldenrod;
   }
   .main-navigation ul {
     display: block;
@@ -886,6 +938,58 @@ button.dropdown-toggle {
 .post,
 .page {
   margin: 0 0 1.5em;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.entry-header {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.cat-links {
+  font-weight: 700;
+}
+.cat-links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: darkgoldenrod;
+}
+.cat-links a:focus, .cat-links a:hover {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+.entry-title {
+  margin: 1em 0 0.25em;
+  font-size: 2.5em;
+}
+@media screen and (min-width: 900px) {
+  .entry-title {
+    font-size: 3em;
+  }
+}
+.entry-title a {
+  text-decoration: none;
+  color: black;
+}
+.entry-title a:focus, .entry-title a:hover {
+  border-bottom: 5px solid darkgoldenrod;
+}
+
+.entry-meta {
+  font-size: 90%;
+}
+.entry-meta a {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+.entry-meta a:focus, .entry-meta a:hover {
+  border-bottom: 2px solid darkgoldenrod;
+}
+
+.byline::after {
+  content: "|";
+  margin: 0 0.5em;
 }
 
 .updated:not(.published) {
@@ -969,6 +1073,20 @@ button.dropdown-toggle {
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
   display: inline-block;
+}
+
+/* Images
+--------------------------------------------- */
+.wp-caption.aligncenter,
+.centered-image {
+  max-width: 100vw;
+  margin: 0 -1em;
+}
+@media screen and (min-width: 600px) {
+  .wp-caption.aligncenter,
+.centered-image {
+    margin: 0 -2em;
+  }
 }
 
 /* Captions
