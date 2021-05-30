@@ -661,26 +661,78 @@ textarea {
 --------------------------------------------------------------*/
 /* Navigation
 --------------------------------------------- */
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-  margin: 0 0 1.5em;
+.comment-navigation,
+.posts-navigation,
+.post-navigation,
+.paging-navigation {
+  padding: 2em 0;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: left;
+  overflow: hidden;
 }
-.comment-navigation .nav-links,
-.posts-navigation .nav-links,
-.post-navigation .nav-links {
+.comment-navigation .meta-nav,
+.posts-navigation .meta-nav,
+.post-navigation .meta-nav,
+.paging-navigation .meta-nav {
+  display: block;
+}
+.comment-navigation a,
+.posts-navigation a,
+.post-navigation a,
+.paging-navigation a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  padding: 1em;
+  border: 1px solid #cccccc;
+  color: black;
+}
+.comment-navigation a:hover, .comment-navigation a:focus,
+.posts-navigation a:hover,
+.posts-navigation a:focus,
+.post-navigation a:hover,
+.post-navigation a:focus,
+.paging-navigation a:hover,
+.paging-navigation a:focus {
+  color: black;
+  border-color: darkgoldenrod;
+  background: darkgoldenrod;
+}
+
+.nav-links {
   display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0;
+}
+
+.comment-navigation .nav-title,
+.posts-navigation .nav-title,
+.post-navigation .nav-title {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.comment-navigation .nav-subtitle,
+.posts-navigation .nav-subtitle,
+.post-navigation .nav-subtitle {
+  display: block;
 }
 .comment-navigation .nav-previous,
+.comment-navigation .nav-next,
 .posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  flex: 1 0 50%;
+.posts-navigation .nav-next,
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+  float: left;
+  display: flex;
+  align-items: stretch;
+  width: 45%;
 }
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-  text-align: end;
-  flex: 1 0 50%;
+  float: right;
+  text-align: right;
 }
 
 /* Header
@@ -886,6 +938,7 @@ button.dropdown-toggle {
 .post,
 .page {
   margin: 0 0 1.5em;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .entry-header {
