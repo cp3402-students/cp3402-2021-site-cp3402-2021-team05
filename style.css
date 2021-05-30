@@ -649,6 +649,8 @@ textarea {
 --------------------------------------------------------------*/
 .site-main {
   padding: 1em;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 @media screen and (min-width: 600px) {
   .site-main {
