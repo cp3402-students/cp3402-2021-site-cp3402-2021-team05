@@ -769,8 +769,8 @@ textarea {
 }
 .custom-logo-link img {
   display: block;
-  height: 65px;
   width: auto;
+  height: 100px;
 }
 
 .site-branding-text {
@@ -820,6 +820,8 @@ textarea {
 /* Import Header Menu */
 .main-navigation {
   display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.2em;
   font-weight: 500;
   clear: left;
 }
