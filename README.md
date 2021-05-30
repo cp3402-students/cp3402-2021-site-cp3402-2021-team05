@@ -7,16 +7,16 @@ This repository is for the custom WordPress theme made by Group 5. The theme is 
 ## Documentation
 [Deployment](/deployment.md)  
 [Theme](/theme.md)  
-[site](/site.md)
+[Site](/site.md)
 
 ## Site Requirements
-> Coming soon
 - Oracle VM Virtual Box
 - VCCW
 - WordMove
 - Visual Studio Code/PhpStorm
 - Github
-- 
+- Git Bash (Or any other terminal)
+- Node.js
 
 ## Contributers
 * [Jack McGill](https://github.com/JackMcKill)
