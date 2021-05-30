@@ -849,7 +849,7 @@ button.dropdown-toggle {
   .main-navigation .menu-item-has-children > a,
 .main-navigation .page_item_has_children > a {
     padding-right: 2em;
-    background: orange;
+    background: darkgoldenrod;
   }
   .main-navigation ul {
     display: block;
@@ -886,6 +886,57 @@ button.dropdown-toggle {
 .post,
 .page {
   margin: 0 0 1.5em;
+}
+
+.entry-header {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.cat-links {
+  font-weight: 700;
+}
+.cat-links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: darkgoldenrod;
+}
+.cat-links a:focus, .cat-links a:hover {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+.entry-title {
+  margin: 1em 0 0.25em;
+  font-size: 2.5em;
+}
+@media screen and (min-width: 900px) {
+  .entry-title {
+    font-size: 3em;
+  }
+}
+.entry-title a {
+  text-decoration: none;
+  color: black;
+}
+.entry-title a:focus, .entry-title a:hover {
+  border-bottom: 5px solid darkgoldenrod;
+}
+
+.entry-meta {
+  font-size: 90%;
+}
+.entry-meta a {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+.entry-meta a:focus, .entry-meta a:hover {
+  border-bottom: 2px solid darkgoldenrod;
+}
+
+.byline::after {
+  content: "|";
+  margin: 0 0.5em;
 }
 
 .updated:not(.published) {
