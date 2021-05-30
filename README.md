@@ -1,15 +1,17 @@
 # Townsville Jazz Club Website Development
-> CP3402 2021 Team 05
 
 ## Description
-> Coming soon
+This is a custom WordPress theme, built off of the [_s Underscores](https://underscores.me) theme.
+Developed by the CP3402 Team 05 for the [Townsville Jazz Club](http://jazztownsville.com).
 
-# Requirements
-> Coming soon
+## Documentation
+Please visit the following documentation for further details.  
+[Deployment](/documentation/deployment.md)  
+[Theme](/documentation/theme.md)  
+[Site](/documentation/site.md)
 
 ## Contributers
-
 * [Jack McGill](https://github.com/JackMcKill)
-* [Levi Smith](https://github.com/levismith123)
 * [Chris Reppel](https://github.com/Chris-Reppel)
-* [Jason Williams](https://github.com/jasonwilliams-jcu)
+* ~~Jason Williams~~
+* ~~Levi Smith~~
